@@ -1,0 +1,137 @@
+@import 'main.css';
+
+/* mail container (right) */
+#rightContainerEmail {
+    background-color: #CBCBCC;
+    padding: 20px 0;
+}
+/* .textarea {
+    border: .5px solid #505055;
+    border-radius: 5px;
+    color: black;
+    height: 400px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 300px;
+    margin: 20px 0 0 0;
+} */
+#rightContainerEmail .deleteIcon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+/* chat bubbles */
+#rightContainerEmail #chats {
+    display: flex;
+    justify-content: center;
+	width: 700px;
+    min-height: 800px;
+	max-height: 1200px;
+	position: relative;
+}
+#rightContainerEmail .chat-1, 
+#rightContainerEmail .chat-2,
+#rightContainerEmail .chat-3 {
+    background-color: #7a91af;
+    border-radius: 10%;
+    box-shadow: 10px 5px 10px #77839e74;
+    height: 20%;
+    font-size: 12px;
+    padding: 10px 15px;
+    position: absolute;
+  	width: 50%;
+}
+#rightContainerEmail .chat-1:hover, 
+#rightContainerEmail .chat-2:hover,
+#rightContainerEmail .chat-3:hover,
+#textareaReply:hover {
+    transform: scale(1.005);
+    transition: .2s;
+}
+#rightContainerEmail .left-point,
+#rightContainerEmail .left-point-3 {
+	left: -10%;
+	transform: rotate(60deg);
+}
+#rightContainerEmail .chat-2 {
+    text-align: right;
+  	right: 0;
+    opacity: .3;
+    margin-top: 200px;
+}
+#rightContainerEmail .chat-3 {
+    margin-top: 400px;
+}
+#rightContainerEmail .right-point {
+	right: -10%;
+	transform: rotate(-60deg);
+}
+#rightContainerEmail .left-point,
+.right-point,
+.left-point-3 {
+    border-left: 2vh solid transparent;
+	border-right: 2vh solid transparent;
+	border-top: 8vh solid #7a91af;
+    height: 0;
+    position: absolute;
+	top: 35%;
+    width: 0;
+}
+#rightContainerEmail .avatar-1,
+#rightContainerEmail .avatar-2,
+#rightContainerEmail .avatar-3 {
+    align-items: center;
+    background-color: #7a91af;
+    border-radius: 180px;
+    box-shadow: 10px 5px 10px #77839e74;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    width: 50px;
+}
+#rightContainerEmail .avatar-1,
+#rightContainerEmail .avatar-3 {
+    transform: rotate(-60deg);
+}
+#rightContainerEmail .avatar-2 {
+    transform: rotate(60deg);
+}
+#rightContainerEmail #replyContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;    
+    margin: 40px 0;
+    width: 100%;
+}
+#rightContainerEmail #textareaReply {
+    background-color: #77839e;
+    border: 0 none;
+    border-radius: 5px;
+    border-bottom: 1px solid #77839e;
+    border-right: 1px solid #77839e;
+    box-shadow: 10px 5px 10px #77839e74;
+    color: black;
+    height: 50px;
+    font-size: 14px;
+    max-height: 150px;
+    min-height: 50px;
+    outline: none;
+    overflow: visible;
+    opacity: .3;
+    width: 400px;
+    max-width: 400px;
+    min-width: 400px;
+}
+#rightContainerEmail textarea::placeholder {
+    color: black;
+}
+#rightContainerEmail #textareaReply:hover,
+#rightContainerEmail #textareaReply:focus {
+    background-color: #77839e;
+    transform: scale(1.005);
+    opacity: .5;
+    transition: .3s;
+}

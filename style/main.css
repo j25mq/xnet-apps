@@ -1,0 +1,87 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+textarea {
+    background: none;
+    outline: none;
+}
+/* buttons */
+button:disabled {
+    opacity: .5;
+}
+button:hover:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+.btnMenu:hover {
+    background-color: #cbcbcc;
+    cursor: pointer;
+    transition: .5s;
+}
+.nvMsg,
+.sendBtn,
+.replyBtn {
+    align-items: center;
+    background-color: #505055;
+    border: none 0;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 250px;
+}
+.nvMsg:hover,
+.sendBtn:hover,
+.replyBtn:hover {
+    cursor: pointer;
+    transition: .5s;
+    opacity: .8; 
+}
+.deleteIcon:hover,
+.div2 svg:hover {
+    color: #870700;
+}
+.archieveIcon:hover {
+    color: #785518;
+}
+.replyIcon:hover {
+    color: #162a8d;
+}
+.refreshIcon button {
+    background: none;
+    border: none 0;
+}
+.refreshIcon button:hover {
+    cursor: pointer;
+    opacity: .5;
+    transition: .5s;
+}
+.deleteIcon:hover,
+.archieveIcon:hover,
+.replyIcon:hover {
+    cursor: pointer;
+    transition: .5s;
+}
+
+/* typo */
+#menuGrid button {
+    font-size: 18px;
+}
+.mailContainer .div1 {
+    font-size: 18px;
+}
+.mailContainer .div2 {
+    font-size: 16px;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
