@@ -221,3 +221,11 @@ a {
     color: black;
     text-decoration: none;
 }
+
+
+.disabled {
+    pointer-events: none;
+}
+.disabled:hover {
+    cursor: not-allowed;
+}
