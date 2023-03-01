@@ -13,6 +13,20 @@ html, body {
     grid-template-columns: 5% 47.5% 47.5%;
     height: 100%;
 }
+.cols-3,
+.cols-3 
+.cols-3 {
+    display: grid;
+
+    grid-template-columns: 5% 47.5% 47.5%;
+    height: 100%;
+}
+.col-4 {
+    display: grid;
+    height: 100%;
+
+    grid-template-columns: 5% 47.5% 47.5%;
+}
 
 /* left container (chat icon) */
 #leftContainer {
@@ -27,7 +41,8 @@ html, body {
 }
 
 /* center container (emails list) */
-#centerContainer {
+#centerContainer,
+#sentMsgTab {
     display: flex;
     background-color: #afb9c3;
     flex-direction: column;
@@ -228,4 +243,45 @@ a {
 }
 .disabled:hover {
     cursor: not-allowed;
+}
+
+/* js classlist */
+.transition {
+    transition: .5s;
+}
+.displayNone {
+    display: none;
+}
+.displayFlex {
+    display: flex;
+}
+.displayBlock {
+    display: block;
+}
+.addPointerEvents {
+    pointer-events: auto;
+}
+.removePointerEvents {
+    pointer-events: none;
+}
+.newMsgStyle {
+    font-size: 16px;
+    opacity: .5;
+    width: 200px;
+}
+.noBackgroundColor {
+    background-color: none;
+}
+.mailStyle {
+    background-color: #bac5d1;
+    font-weight: normal;
+    margin-right: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.mailNoStyle {
+    background-color: #CBCBCC;
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }

@@ -116,11 +116,15 @@
     width: 50px;
 }
 #rightContainerEmail .avatar-1,
-#rightContainerEmail .avatar-3 {
-    transform: rotate(-60deg);
+#rightContainerEmail .avatar-2 {
+    position: absolute;
+	top: 60%;
+}
+#rightContainerEmail .avatar-1 {
+    left: -30%;
 }
 #rightContainerEmail .avatar-2 {
-    transform: rotate(60deg);
+    right: -30%;
 }
 #rightContainerEmail .deleteIcon {
     position: absolute;

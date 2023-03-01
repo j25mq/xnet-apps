@@ -3,7 +3,7 @@
 
 /* right container - 1 (recipients list) */
 #rightContainer1 {
-    display: flex;
+    /* display: flex; */
     background-color: #CBCBCC;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +64,7 @@
 /* right container - 2 (new email content) */
 #rightContainer2 {
     align-items: center;
-    display: flex;
+    /* display: flex; */
     background-color: #ebebeb;
     flex-direction: column;
     justify-content: center;

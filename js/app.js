@@ -9,21 +9,32 @@ newMsg.setAttribute('id', 'newMsg');
 newMsg.setAttribute('class', 'newMsg');
 newMsg.innerHTML = `New Message`;
 
+// create unread msg tab
 const unreadMsg = document.createElement('button');
 unreadMsg.setAttribute('id', 'unreadMsg');
 unreadMsg.setAttribute('class', 'btnMenu');
-// unreadMsg.classList.add('btnMenumailUnread');
 unreadMsg.innerHTML = `Unread`;
+unreadMsg.style.backgroundColor = "none";
 
+// create archived msg tab
 const archivedMsg = document.createElement('button');
 archivedMsg.setAttribute('id', 'archivedMsg');
 archivedMsg.setAttribute('class', 'btnMenu');
 archivedMsg.innerHTML = `Archived`;
+archivedMsg.style.backgroundColor = "none";
+
+// create sent msg tab
+const sentMsgTab = document.createElement('div');
+sentMsgTab.setAttribute('id', 'sentMsgTab');
 
 const sentMsg = document.createElement('button');
 sentMsg.setAttribute('id', 'sentMsg');
 sentMsg.setAttribute('class', 'btnMenu');
 sentMsg.innerHTML = `Sent`;
+sentMsg.classList.add('noBackgroundColor');
+
+const sentTo = document.createElement('div');
+sentTo.setAttribute('id', 'sentTo');
 
 // create email container
 const rightContainerEmail = document.createElement('div');
@@ -62,6 +73,7 @@ leftPoint.setAttribute('class', 'left-point');
 const rightPoint = document.createElement('div');
 rightPoint.setAttribute('class', 'right-point');
 
+// initialize menu
 const createMenuGrid = () => {
     const menuGrid = document.createElement('div');
     menuGrid.setAttribute('id', 'menuGrid');
@@ -88,7 +100,302 @@ const createMenuGrid = () => {
     centerContainer.appendChild(menuGrid);
 };
 
+// initialize mails list
 const createMailList = () => {
+    // create forloop - 2 unread emails
+    let mailCountUnread = 2;
+    for (let i = 0 ; i < mailCountUnread ; ++i) {
+        const mailContainer = document.createElement('div');
+        mailContainer.setAttribute('class', 'mail mailUnread');
+        const div1 = document.createElement('div');
+        div1.setAttribute('class', 'div1');
+        div1.innerHTML = `<p>@Username</p>`;
+    
+        const div2 = document.createElement('div');
+        div2.setAttribute('class', 'div2');
+        div2.innerHTML = `<p>Message extract...</p>`;
+    
+        const div3 = document.createElement('div');
+        div3.setAttribute('class', 'div3');
+        div3.innerHTML = `<p>Sending date</p>`;
+    
+        const iconsMail = document.createElement('div');
+        iconsMail.setAttribute('class', 'iconsMail');
+        iconsMail.setAttribute('class', 'div4');
+        iconsMail.innerHTML = `<svg class="archieveIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16"><path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/></svg>
+            <svg class="deleteIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg>`;
+
+        mailContainer.appendChild(div1);
+        mailContainer.appendChild(div2);
+        mailContainer.appendChild(div3);
+        mailContainer.appendChild(iconsMail);
+
+        centerContainer.appendChild(mailContainer);
+        mainContainer.appendChild(centerContainer);
+    };
+
+    // create forloop - 3 read emails
+    let mailCountRead = 3;
+    for (let i = 0 ; i < mailCountRead ; ++i) {
+        const mailContainer = document.createElement('div');
+        mailContainer.setAttribute('class', 'mail mailRead');
+        const div1 = document.createElement('div');
+        div1.setAttribute('class', 'div1');
+        div1.innerHTML = `<p>@Username</p>`;
+    
+        const div2 = document.createElement('div');
+        div2.setAttribute('class', 'div2');
+        div2.innerHTML = `<p>Message extract...</p>`;
+    
+        const div3 = document.createElement('div');
+        div3.setAttribute('class', 'div3');
+        div3.innerHTML = `<p>Sending date</p>`;
+    
+        const iconsMail = document.createElement('div');
+        iconsMail.setAttribute('class', 'iconsMail');
+        iconsMail.setAttribute('class', 'div4');
+        iconsMail.innerHTML = `<svg class="archieveIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16"><path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/></svg>
+            <svg class="deleteIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg>`;
+
+        mailContainer.appendChild(div1);
+        mailContainer.appendChild(div2);
+        mailContainer.appendChild(div3);
+        mailContainer.appendChild(iconsMail);
+
+        centerContainer.appendChild(mailContainer);
+        mainContainer.appendChild(centerContainer);
+    };
+    
+    // bind events to every mail box
+    // let CountClicks = 0;
+    Array.from(document.getElementsByClassName('mail')).forEach((el) => {
+        el.addEventListener('click', function () {
+            // CountClicks += 1;
+            el.classList.add('transition');
+            el.classList.add('mailNoStyle');
+            newMsg.classList.remove('newMsgStyle');
+
+            mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+
+            centerContainer.classList.add('removePointerEvents');
+            rightContainer.style.display = "none";
+        
+            rightContainer1.classList.remove('displayFlex');
+            rightContainer1.classList.add('displayNone');
+
+            rightContainer2.classList.remove('displayFlex');
+            rightContainer2.classList.add('displayNone');
+
+            rightContainerEmail.classList.add('transition');
+            rightContainerEmail.classList.add('displayBlock');
+        
+            rightContainerEmail.appendChild(goBack);
+            mainContainer.appendChild(rightContainerEmail);
+
+            let goBackToHomepage = () => {
+                el.classList.add('transition');
+                el.classList.remove('mailNoStyle');
+                el.classList.add('mailStyle');
+            };
+
+            goBack.addEventListener('click', goBackToHomepage);
+            newMsg.addEventListener('click', goBackToHomepage);
+        });
+
+        const mailTotalCount = mailCountUnread + mailCountRead;
+        rightContainer.innerHTML = `<h2><b>Inbox</b></h2><h3>You have <b>${mailTotalCount}</b> conversations.</h3>`;
+        mainContainer.appendChild(rightContainer);
+    });
+};
+
+// initialize reply section
+const createReplyContainer = () => {
+    // create send button
+    const sendBtn = document.createElement('button');
+    sendBtn.innerHTML = `Send`;
+    sendBtn.setAttribute('class', 'sendBtn');
+
+    // create textarea - reply
+    const textareaReply = document.createElement('textarea');
+    textareaReply.placeholder = "Your message...";
+    textareaReply.setAttribute('id', 'textareaReply');
+
+    // build reply container
+    replyContainer.setAttribute('id', 'replyContainer');
+    replyContainer.appendChild(textareaReply);
+    replyContainer.appendChild(sendBtn);
+    rightContainerEmail.appendChild(replyContainer);
+};
+
+// initialize chat bubbles
+const createChatBubbles = () => {
+    // create chats container
+    const chats = document.createElement('div');
+    chats.setAttribute('id', 'chats');
+
+    // create forloop - create 3 chat bubbles
+    const chatElts = [];
+    const chatsCount = 3;
+    for (let i = 0 ; i < chatsCount ; ++i) {
+        const chat = document.createElement('div');
+        chat.innerHTML = `<p><b>Sent at date/time of dispatch</b><br>Message content...</p>`;
+        if (i % 2) {
+            chat.setAttribute('class', 'chat-2');
+            chat.appendChild(rightPoint);
+            chat.appendChild(avatar2);
+            chatElts.push(chat);
+            chats.appendChild(chat);
+        } else {
+            chat.setAttribute('class', 'chat-1');
+            chat.appendChild(leftPoint);
+            chat.appendChild(avatar1);
+            chatElts.push(chat);
+            chats.appendChild(chat);
+        }
+        chatElts.push(chats);
+        chats.appendChild(chat);
+    }
+    rightContainerEmail.appendChild(chats);
+};
+
+// initialize available recipients list
+const createAvRecipients = () => {
+    const destDisp = document.createElement('p');
+    destDisp.setAttribute('class', 'destDisp');
+    destDisp.innerHTML = 'Available recipients:';
+    rightContainer1.appendChild(destDisp);
+    
+    // create forloop - create 8 recipients 
+    const recepCount = 8;
+    for (let i = 0 ; i < recepCount ; ++i) {
+        const destContainer = document.createElement('div');
+        destContainer.setAttribute('class', 'destContainer');
+
+        const destContainerCl = document.createElement('div');
+        destContainerCl.setAttribute('class', 'destContainerCl');
+
+        const initialsDest = document.createElement('div');
+        initialsDest.setAttribute('class', 'initialsDest');
+        initialsDest.setAttribute('data-id', `user-${i}`);
+        const char1 = String.fromCharCode(65 + (i * 2));
+        const char2 = String.fromCharCode(65 + (i * 2) + 1);
+        const initials = `${char1}${char2}`;
+        initialsDest.innerHTML = initials;
+
+        const txtDest = document.createElement('div');
+        txtDest.setAttribute('class', 'txtDest');
+        txtDest.innerHTML = `<p style="font-size:18px">@Username</p><p style="font-size:14px">${initials}'s Job position</p>`;
+
+        const avatarDest = document.createElement('div');
+        avatarDest.setAttribute('class', 'avatarDest');
+        avatarDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>`;
+        avatarDest.classList.add('displayFlex');
+        avatarDest.classList.add("unchecked");
+
+        const checkDest = document.createElement('div');
+        checkDest.setAttribute('class', 'checked checkDest');
+        checkDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/></svg>`;
+        checkDest.classList.add('displayNone');
+        checkDest.classList.add("checked");
+
+        const toggleRecipient = () => {
+            if (checkDest.classList.contains("checked")) {
+                avatarDest.classList.add('displayNone');
+                checkDest.classList.add('displayFlex');
+                destContainerCl.style.backgroundColor = "#555555";
+
+                sentTo.innerHTML += (`${char1}${char2} `);
+                checkDest.classList.remove("checked");
+            } else if (checkDest.classList.contains("unchecked")) {
+                avatarDestclassList.add('displayFlex');
+                checkDestclassList.add('displayNone');
+                destContainerCl.style.backgroundColor = "#6a6a6a";
+                sentTo.innerHTML = "";
+            };
+        };
+        destContainer.addEventListener('click', toggleRecipient); 
+
+        // build recipients list
+        destContainer.appendChild(destContainerCl);
+        destContainerCl.appendChild(initialsDest);
+        destContainerCl.appendChild(txtDest);
+        destContainerCl.appendChild(avatarDest);
+        destContainerCl.appendChild(checkDest);
+        rightContainer1.appendChild(destContainer);
+    };
+};
+
+// initialize typing area for new msg
+const createNwMsgContent = () => {
+    const mailContent = document.createElement('div');
+    mailContent.setAttribute('id', 'mailContent');
+
+    const addTo = document.createElement('p');
+    addTo.innerHTML = `Forwarded to...`;
+
+    const sendBtn = document.createElement('button');
+    sendBtn.setAttribute('class', 'sendBtn');
+    sendBtn.innerHTML = `Send`;
+
+    const textareaReply = document.createElement('textarea');
+    textareaReply.setAttribute('id', 'textareaReply');  
+    textareaReply.placeholder = "Your message..."; 
+
+    // build new email content
+    sentTo.appendChild(addTo);
+    mailContent.appendChild(sentTo);
+    mailContent.appendChild(textareaReply);
+    mailContent.appendChild(sendBtn);
+    rightContainer2.appendChild(mailContent);
+};
+
+// styling
+let goBackToHomepage = () => {
+    newMsg.classList.remove('newMsgStyle');
+
+    mainContainer.classList.add('transition');
+    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+
+    centerContainer.classList.remove('removePointerEvents');
+    centerContainer.classList.add('addPointerEvents');
+
+    rightContainerEmail.classList.remove('displayBlock');
+    rightContainerEmail.classList.add('displayNone'); 
+
+    rightContainer1.classList.remove('displayFlex');
+    rightContainer1.classList.add('displayNone');
+
+    rightContainer2.classList.remove('displayFlex');
+    rightContainer2.classList.add('displayNone');
+
+    rightContainer.classList.add('transition');
+    rightContainer.style.display = "flex";
+};
+
+// initialize new message
+const displayNewMsg = () => {
+    newMsg.classList.add('newMsgStyle');
+
+    mainContainer.classList.add('transition');
+    mainContainer.style.gridTemplateColumns = "5% 35% 25% 35%";
+
+    centerContainer.classList.add('removePointerEvents');
+    rightContainer.style.display = "none";
+
+    rightContainer1.classList.add('transition');
+    rightContainer1.classList.add('displayFlex');
+
+    rightContainer2.classList.add('transition');
+    rightContainer2.classList.add('displayFlex');
+    
+    rightContainer2.appendChild(goBack);
+    mainContainer.appendChild(rightContainer1);
+    mainContainer.appendChild(rightContainer2);
+};
+
+// initialize menu tabs
+// initialize unread msg tab
+const createUnreadMailList = () => {
     // create forloop - 2 unread emails
     let mailCountUnread = 2;
     for (let i = 0 ; i < mailCountUnread ; ++i) {
@@ -121,10 +428,33 @@ const createMailList = () => {
         centerContainer.appendChild(mailContainer);
         mainContainer.appendChild(centerContainer);
     };
+};
 
-    // create forloop - 3 read emails
-    let mailCountRead = 3;
-    for (let i = 0 ; i < mailCountRead ; ++i) {
+const displayUnreadMsg = () => {
+    centerContainer.innerHTML = "";
+    centerContainer.classList.add('addPointerEvents');
+    rightContainerEmail.classList.add('displayNone');
+    rightContainer1.classList.add('displayNone');
+    rightContainer2.classList.add('displayNone');
+
+    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+    mainContainer.classList.add('transition');
+
+    rightContainer.classList.add('displayFlex');
+    rightContainer.classList.add('transition');
+    unreadMsg.style.backgroundColor = "#cbcbcc";
+    archivedMsg.classList.add('noBackgroundColor');
+    sentMsg.classList.add('noBackgroundColor');
+
+    createMenuGrid();
+    createUnreadMailList();
+};
+
+// initialize archived msg tab
+const createArchivedMailList = () => {
+    // create forloop - 2 unread emails
+    let mailCountArchived = 7;
+    for (let i = 0 ; i < mailCountArchived ; ++i) {
         const mailContainer = document.createElement('div');
         mailContainer.setAttribute('class', 'mail mailRead');
         const div1 = document.createElement('div');
@@ -154,195 +484,37 @@ const createMailList = () => {
         centerContainer.appendChild(mailContainer);
         mainContainer.appendChild(centerContainer);
     };
-    
-    // bind events to every mail box
-    Array.from(document.getElementsByClassName('mail')).forEach((el) => {
-        el.addEventListener('click', function () {
-            el.style.transition = ".5s";
-            el.style.backgroundColor = "#CBCBCC";
-            el.style.marginRight = "0";
-            el.style.borderTopRightRadius = "0";
-            el.style.borderBottomRightRadius = "0";
-
-            centerContainer.style.pointerEvents = "auto";
-            rightContainer.style.display="none";
-            rightContainer1.style.display="none";
-            rightContainer2.style.display="none";
-        
-            mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
-            mainContainer.style.transition = ".5s";
-        
-            rightContainerEmail.style.display="block";
-            rightContainerEmail.style.transition = ".5s";
-        
-            rightContainerEmail.appendChild(goBack);
-            mainContainer.appendChild(rightContainerEmail);
-
-            let goBackToHomepage = () => {
-                el.style.transition = ".5s";    
-                el.style.backgroundColor = "#bac5d1";
-                el.style.fontWeight = "normal";
-                el.style.marginRight = "10px";
-                el.style.borderTopRightRadius = "5px";
-                el.style.borderBottomRightRadius = "5px";
-            };
-
-            goBack.addEventListener('click', goBackToHomepage);
-            newMsg.addEventListener('click', goBackToHomepage);
-        });
-
-        const mailTotalCount = mailCountUnread + mailCountRead;
-        rightContainer.innerHTML = `<h2><b>Inbox</b></h2><h3>You have <b>${mailTotalCount}</b> conversations.</h3>`;
-        mainContainer.appendChild(rightContainer);
-    });
 };
 
-const createReplyContainer = () => {
-    // create send button
-    const sendBtn = document.createElement('button');
-    sendBtn.innerHTML = `Send`;
-    sendBtn.setAttribute('class', 'sendBtn');
+const displayArchivedMsg = () => {
+    centerContainer.innerHTML = "";
+    centerContainer.classList.add('addPointerEvents');
+    rightContainerEmail.classList.remove('displayBlock');
+    rightContainer1.classList.remove('displayBlock');
+    rightContainer2.classList.remove('displayBlock');
 
-    // create textarea - reply
-    const textareaReply = document.createElement('textarea');
-    textareaReply.placeholder = "Your message...";
-    textareaReply.setAttribute('id', 'textareaReply');
+    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+    mainContainer.classList.add('transition');
 
-    // build reply container
-    replyContainer.setAttribute('id', 'replyContainer');
-    replyContainer.appendChild(textareaReply);
-    replyContainer.appendChild(sendBtn);
-    rightContainerEmail.appendChild(replyContainer);
+    rightContainer.classList.remove('displayNone');
+    rightContainer.classList.add('displayFlex');
+
+    rightContainer.classList.add('transition');
+    unreadMsg.style.backgroundColor = "none";
+    archivedMsg.style.backgroundColor = "#cbcbcc";
+    sentMsg.style.backgroundColor = "none";
+
+    createMenuGrid();
+    createArchivedMailList();
 };
 
-const createChatBubbles = () => {
-    // create chats container
-    const chats = document.createElement('div');
-    chats.setAttribute('id', 'chats');
-
-    // create forloop - create 3 chat bubbles
-    const chatElts = [];
-    const chatsCount = 3;
-    for (let i = 0 ; i < chatsCount ; ++i) {
-        const chat = document.createElement('div');
-        chat.innerHTML = `<p><b>Sent at date/time of dispatch</b><br>Message content...</p>`;
-        if (i % 2) {
-            chat.setAttribute('class', 'chat-2');
-            chat.appendChild(rightPoint);
-            chat.appendChild(avatar2);
-            chatElts.push(chat);
-            chats.appendChild(chat);
-        } else {
-            chat.setAttribute('class', 'chat-1');
-            chat.appendChild(leftPoint);
-            chat.appendChild(avatar1);
-            chatElts.push(chat);
-            chats.appendChild(chat);
-        }
-        chatElts.push(chats);
-        chats.appendChild(chat);
-    }
-    rightContainerEmail.appendChild(chats);
-};
-
-const sentTo = document.createElement('div');
-sentTo.setAttribute('id', 'sentTo');
-
-
-const createAvRecipients = () => {
-    const destDisp = document.createElement('p');
-    destDisp.setAttribute('class', 'destDisp');
-    destDisp.innerHTML = 'Available recipients:';
-    rightContainer1.appendChild(destDisp);
-    
-    // create forloop - create 8 recipients 
-    const recepCount = 8;
-    for (let i = 0 ; i < recepCount ; ++i) {
-        const destContainer = document.createElement('div');
-        destContainer.setAttribute('class', 'destContainer');
-
-        const destContainerCl = document.createElement('div');
-        destContainerCl.setAttribute('class', 'destContainerCl');
-
-        const initialsDest = document.createElement('div');
-        initialsDest.setAttribute('class', 'initialsDest');
-        initialsDest.setAttribute('data-id', `user-${i}`);
-        const char1 = String.fromCharCode(65 + (i * 2));
-        const char2 = String.fromCharCode(65 + (i * 2) + 1);
-        const initials = `${char1}${char2}`;
-        initialsDest.innerHTML = initials;
-
-        const txtDest = document.createElement('div');
-        txtDest.setAttribute('class', 'txtDest');
-        txtDest.innerHTML = `<p style="font-size:18px">@Username</p><p style="font-size:14px">${initials}'s Job position</p>`;
-
-        const avatarDest = document.createElement('div');
-        avatarDest.setAttribute('class', 'avatarDest');
-        avatarDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>`;
-        avatarDest.style.display = "flex";
-        avatarDest.classList.add("unchecked");
-
-        const checkDest = document.createElement('div');
-        checkDest.setAttribute('class', 'checked checkDest');
-        checkDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/></svg>`;
-        checkDest.style.display = "none";
-        checkDest.classList.add("checked");
-
-        const toggleRecipient = () => {
-            if (checkDest.classList.contains("checked")) {
-                avatarDest.style.display = "none";
-                checkDest.style.display = "flex";
-                destContainerCl.style.backgroundColor = "#555555";
-
-                sentTo.innerHTML += (`${char1}${char2} `);
-                checkDest.classList.remove("checked");
-            } else if (checkDest.classList.contains("unchecked")) {
-                avatarDest.style.display = "flex";
-                checkDest.style.display = "none";
-                destContainerCl.style.backgroundColor = "#6a6a6a";
-                sentTo.innerHTML = "";
-            };
-        };
-        destContainer.addEventListener('click', toggleRecipient); 
-
-        // build recipients list
-        destContainer.appendChild(destContainerCl);
-        destContainerCl.appendChild(initialsDest);
-        destContainerCl.appendChild(txtDest);
-        destContainerCl.appendChild(avatarDest);
-        destContainerCl.appendChild(checkDest);
-        rightContainer1.appendChild(destContainer);
-    };
-};
-
-const createNwMsgContent = () => {
-    const mailContent = document.createElement('div');
-    mailContent.setAttribute('id', 'mailContent');
-
-    const addTo = document.createElement('p');
-    addTo.innerHTML = `To...`;
-
-    const sendBtn = document.createElement('button');
-    sendBtn.setAttribute('class', 'sendBtn');
-    sendBtn.innerHTML = `Send`;
-
-    const textareaReply = document.createElement('textarea');
-    textareaReply.setAttribute('id', 'textareaReply');  
-    textareaReply.placeholder = "Your message..."; 
-
-    // build new email content
-    sentTo.appendChild(addTo);
-    mailContent.appendChild(sentTo);
-    mailContent.appendChild(textareaReply);
-    mailContent.appendChild(sendBtn);
-    rightContainer2.appendChild(mailContent);
-};
-
-const createUnreadMsgBtn = () => {
-    const mailCountUnread = 2;
-    for (let i = 0 ; i < mailCountUnread ; ++i) {
+// initialize sent msg tab
+const createSentMailList = () => {
+    // create forloop - 5 sent emails
+    let mailCountSent = 5;
+    for (let i = 0 ; i < mailCountSent ; ++i) {
         const mailContainer = document.createElement('div');
-        mailContainer.setAttribute('class', 'mailUnread');
+        mailContainer.setAttribute('class', 'mail mailRead');
         const div1 = document.createElement('div');
         div1.setAttribute('class', 'div1');
         div1.innerHTML = `<p>@Username</p>`;
@@ -367,57 +539,29 @@ const createUnreadMsgBtn = () => {
         mailContainer.appendChild(div3);
         mailContainer.appendChild(iconsMail);
 
-        centerContainer.appendChild(mailContainer);
-        mainContainer.appendChild(centerContainer);
+        sentMsgTab.appendChild(mailContainer);
+        mainContainer.appendChild(sentMsgTab);
     };
 };
 
-const styleNewMsgBtn = () => {
-    centerContainer.style.pointerEvents = "auto";
-    newMsg.style.opacity = ".5";
-    newMsg.style.width = "200px";
-    newMsg.style.fontSize = "16px";
-};
-
-const removeStyleNewMsgBtn = () => {
-    newMsg.style.opacity = "1";
-    newMsg.style.width = "250px";
-    newMsg.style.fontSize = "18px";
-};
-
-let goBackToHomepage = () => {
-    removeStyleNewMsgBtn();
-    centerContainer.style.pointerEvents = "auto";
-    rightContainerEmail.style.display="none";
-    rightContainer1.style.display="none";
-    rightContainer2.style.display="none";
+const displaySentMsg = () => {
+    createMenuGrid();
+    createSentMailList();
+    newMsg.classList.remove('newMsgStyle');
 
     mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
-    mainContainer.style.transition = ".5s";
 
-    rightContainer.style.display="flex";
-    rightContainer.style.transition = ".5s";
+    centerContainer.replaceWith(sentMsgTab);
+
+    rightContainer1.classList.remove('displayFlex');
+    rightContainer1.classList.add('displayNone');
+
+    rightContainer2.classList.remove('displayFlex');
+    rightContainer2.classList.add('displayNone');
+
 };
 
-const displayNewMsg = () => {
-    styleNewMsgBtn();
-    centerContainer.style.pointerEvents = "none";
-    rightContainer.style.display="none";
-    rightContainerEmail.style.display="none";
-
-    mainContainer.style.gridTemplateColumns = "5% 35% 25% 35%";
-    mainContainer.style.transition = ".5s";
-
-    rightContainer1.style.display="block";
-    rightContainer2.style.display="block";
-    rightContainer1.style.transition = ".5s";
-    rightContainer2.style.transition = ".5s";
-    
-    rightContainer2.appendChild(goBack);
-    mainContainer.appendChild(rightContainer1);
-    mainContainer.appendChild(rightContainer2);
-};
-
+// initialize content
 const createContent = () => {
     createMenuGrid();
     createMailList();
@@ -429,12 +573,13 @@ const createContent = () => {
     createNwMsgContent();
 };
 
+// initialize events
 const loadEvents = () => {
     goBack.addEventListener('click', goBackToHomepage);
     newMsg.addEventListener('click', displayNewMsg);
-    unreadMsg.addEventListener('click', displayNewMsg);
-    // archivedMsg.addEventListener('click', displayarchivedMsg);
-    // sentMsg.addEventListener('click', displaysentMsg);
+    unreadMsg.addEventListener('click', displayUnreadMsg);
+    archivedMsg.addEventListener('click', displayArchivedMsg);
+    sentMsg.addEventListener('click', displaySentMsg);
 };
 
 createContent();

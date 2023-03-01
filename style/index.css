@@ -31,7 +31,8 @@
 }
 
 /* mail container (center-left) */
-#centerContainer {
+#centerContainer,
+#sentMsgTab {
     display: flex;
     background-color: #afb9c3;
     flex-direction: column;
@@ -120,7 +121,7 @@
     padding: 20px 30px;
 } */
 #rightContainer1 {
-    display: flex;
+    /* display: flex; */
     background-color: #CBCBCC;
     flex-direction: column;
     justify-content: center;
@@ -128,7 +129,7 @@
 }
 #rightContainer2 {
     align-items: center;
-    display: flex;
+    /* display: flex; */
     background-color: #ebebeb;
     flex-direction: column;
     justify-content: center;
