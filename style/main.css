@@ -10,7 +10,7 @@ html, body {
 /* main container */
 #mainContainer {
     display: grid;
-    grid-template-columns: 5% 47.5% 47.5%;
+    grid-template-columns: 2% 49% 49%;
     height: 100%;
 }
 .cols-3,
@@ -30,14 +30,22 @@ html, body {
 
 /* left container (chat icon) */
 #leftContainer {
-    align-items: center;
-    background-color: #505055;
     display: flex;
-    height: 80px;
-    justify-content: center;
+    flex-direction: column;
+    width: 100%;
 }
-#leftContainer img {
-    padding: 10px;
+#leftContainer div {
+    color: #505055;
+    display: flex;
+    /* height: 40px; */
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+}
+#leftContainer a {
+    background-color: #505055;
+    color: white;
+    padding: 10px 10px 5px 10px;
 }
 
 /* center container (emails list) */
@@ -284,4 +292,7 @@ a {
     margin-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+.tabBkColor {
+    background-color: #CBCBCC;
 }

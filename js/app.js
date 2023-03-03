@@ -14,27 +14,34 @@ const unreadMsg = document.createElement('button');
 unreadMsg.setAttribute('id', 'unreadMsg');
 unreadMsg.setAttribute('class', 'btnMenu');
 unreadMsg.innerHTML = `Unread`;
-unreadMsg.style.backgroundColor = "none";
+unreadMsg.classList.remove('tabBkColor');
+unreadMsg.classList.add('noBackgroundColor');
 
 // create archived msg tab
 const archivedMsg = document.createElement('button');
 archivedMsg.setAttribute('id', 'archivedMsg');
 archivedMsg.setAttribute('class', 'btnMenu');
 archivedMsg.innerHTML = `Archived`;
-archivedMsg.style.backgroundColor = "none";
+unreadMsg.classList.remove('tabBkColor');
+archivedMsg.classList.add('noBackgroundColor');
+
 
 // create sent msg tab
-const sentMsgTab = document.createElement('div');
-sentMsgTab.setAttribute('id', 'sentMsgTab');
+// const sentMsgTab = document.createElement('div');
+// sentMsgTab.setAttribute('id', 'sentMsgTab');
 
 const sentMsg = document.createElement('button');
 sentMsg.setAttribute('id', 'sentMsg');
 sentMsg.setAttribute('class', 'btnMenu');
 sentMsg.innerHTML = `Sent`;
+unreadMsg.classList.remove('tabBkColor');
 sentMsg.classList.add('noBackgroundColor');
 
 const sentTo = document.createElement('div');
 sentTo.setAttribute('id', 'sentTo');
+
+const addTo = document.createElement('p');
+addTo.innerHTML = `Forwarded to...`;
 
 // create email container
 const rightContainerEmail = document.createElement('div');
@@ -175,7 +182,7 @@ const createMailList = () => {
             el.classList.add('mailNoStyle');
             newMsg.classList.remove('newMsgStyle');
 
-            mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+            mainContainer.style.gridTemplateColumns = "2% 49% 49%";
 
             centerContainer.classList.add('removePointerEvents');
             rightContainer.style.display = "none";
@@ -298,21 +305,67 @@ const createAvRecipients = () => {
         checkDest.classList.add('displayNone');
         checkDest.classList.add("checked");
 
+        function addRecipientToList() {
+            avatarDest.classList.remove('displayFlex');
+            avatarDest.classList.add('displayNone');
+
+            avatarDest.classList.remove("unchecked");
+            avatarDest.classList.add("checked");
+
+            checkDest.classList.remove('displayNone');
+            checkDest.classList.add('displayFlex');
+
+            checkDest.classList.remove("checked");
+
+            destContainerCl.style.backgroundColor = "#555555";
+            sentTo.innerHTML += (`${char1}${char2} `);
+        };
+
+        function removeRecipientFromList() {
+            avatarDest.classList.remove('displayNone');
+            avatarDest.classList.add('displayFlex');
+
+            checkDest.classList.remove('displayFlex');
+            checkDest.classList.add('displayNone');
+
+            destContainerCl.style.backgroundColor = "#6a6a6a";
+            sentTo.innerHTML = '';
+        };
+
         const toggleRecipient = () => {
             if (checkDest.classList.contains("checked")) {
-                avatarDest.classList.add('displayNone');
-                checkDest.classList.add('displayFlex');
-                destContainerCl.style.backgroundColor = "#555555";
-
-                sentTo.innerHTML += (`${char1}${char2} `);
-                checkDest.classList.remove("checked");
-            } else if (checkDest.classList.contains("unchecked")) {
-                avatarDestclassList.add('displayFlex');
-                checkDestclassList.add('displayNone');
-                destContainerCl.style.backgroundColor = "#6a6a6a";
-                sentTo.innerHTML = "";
+                addRecipientToList();
+            } else if (!checkDest.classList.contains("checked")) {
+                removeRecipientFromList();
             };
+
+            function showDelete() {
+                initialsDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>`;
+            };
+    
+            function showInitials() {
+                initialsDest.innerHTML = initials;
+            };
+    
+            destContainerCl.addEventListener('mouseover', showDelete, false);
+            destContainerCl.addEventListener('mouseout', showInitials, false);
         };
+
+        function showArrow() {
+            initialsDest.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+            </svg>`;
+        };
+
+        function showInitials() {
+            initialsDest.innerHTML = initials;
+        };
+
+        destContainerCl.addEventListener('mouseover', showArrow, false);
+        destContainerCl.addEventListener('mouseout', showInitials, false);
+
         destContainer.addEventListener('click', toggleRecipient); 
 
         // build recipients list
@@ -330,8 +383,8 @@ const createNwMsgContent = () => {
     const mailContent = document.createElement('div');
     mailContent.setAttribute('id', 'mailContent');
 
-    const addTo = document.createElement('p');
-    addTo.innerHTML = `Forwarded to...`;
+    // const addTo = document.createElement('p');
+    // addTo.innerHTML = `Forwarded to...`;
 
     const sendBtn = document.createElement('button');
     sendBtn.setAttribute('class', 'sendBtn');
@@ -354,7 +407,7 @@ let goBackToHomepage = () => {
     newMsg.classList.remove('newMsgStyle');
 
     mainContainer.classList.add('transition');
-    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
+    mainContainer.style.gridTemplateColumns = "2% 49% 49%";
 
     centerContainer.classList.remove('removePointerEvents');
     centerContainer.classList.add('addPointerEvents');
@@ -377,7 +430,7 @@ const displayNewMsg = () => {
     newMsg.classList.add('newMsgStyle');
 
     mainContainer.classList.add('transition');
-    mainContainer.style.gridTemplateColumns = "5% 35% 25% 35%";
+    mainContainer.style.gridTemplateColumns = "2% 36.5% 25% 36.5%";
 
     centerContainer.classList.add('removePointerEvents');
     rightContainer.style.display = "none";
@@ -426,25 +479,53 @@ const createUnreadMailList = () => {
         mailContainer.appendChild(iconsMail);
 
         centerContainer.appendChild(mailContainer);
-        mainContainer.appendChild(centerContainer);
     };
+    Array.from(document.getElementsByClassName('mail')).forEach((el) => {
+        el.addEventListener('click', function () {
+            el.classList.add('transition');
+            el.classList.add('mailNoStyle');
+            newMsg.classList.remove('newMsgStyle');
+
+            mainContainer.style.gridTemplateColumns = "2% 49% 49%";
+
+            centerContainer.classList.add('removePointerEvents');
+            rightContainer.style.display = "none";
+        
+            rightContainer1.classList.remove('displayFlex');
+            rightContainer1.classList.add('displayNone');
+
+            rightContainer2.classList.remove('displayFlex');
+            rightContainer2.classList.add('displayNone');
+
+            rightContainerEmail.classList.add('transition');
+            rightContainerEmail.classList.add('displayBlock');
+        
+            rightContainerEmail.appendChild(goBack);
+            mainContainer.appendChild(rightContainerEmail);
+
+            let goBackToHomepage = () => {
+                el.classList.add('transition');
+                el.classList.remove('mailNoStyle');
+                el.classList.add('mailStyle');
+            };
+
+            goBack.addEventListener('click', goBackToHomepage);
+            newMsg.addEventListener('click', goBackToHomepage);
+        });
+    });
 };
 
 const displayUnreadMsg = () => {
     centerContainer.innerHTML = "";
-    centerContainer.classList.add('addPointerEvents');
-    rightContainerEmail.classList.add('displayNone');
-    rightContainer1.classList.add('displayNone');
-    rightContainer2.classList.add('displayNone');
 
-    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
-    mainContainer.classList.add('transition');
-
-    rightContainer.classList.add('displayFlex');
-    rightContainer.classList.add('transition');
-    unreadMsg.style.backgroundColor = "#cbcbcc";
+    archivedMsg.classList.remove('tabBkColor');
     archivedMsg.classList.add('noBackgroundColor');
+
+    sentMsg.classList.remove('tabBkColor');
     sentMsg.classList.add('noBackgroundColor');
+
+    unreadMsg.classList.remove('noBackgroundColor');
+    unreadMsg.classList.add('tabBkColor');
 
     createMenuGrid();
     createUnreadMailList();
@@ -452,7 +533,7 @@ const displayUnreadMsg = () => {
 
 // initialize archived msg tab
 const createArchivedMailList = () => {
-    // create forloop - 2 unread emails
+    // create forloop - 7 archived emails
     let mailCountArchived = 7;
     for (let i = 0 ; i < mailCountArchived ; ++i) {
         const mailContainer = document.createElement('div');
@@ -482,27 +563,53 @@ const createArchivedMailList = () => {
         mailContainer.appendChild(iconsMail);
 
         centerContainer.appendChild(mailContainer);
-        mainContainer.appendChild(centerContainer);
     };
+    Array.from(document.getElementsByClassName('mail')).forEach((el) => {
+        el.addEventListener('click', function () {
+            el.classList.add('transition');
+            el.classList.add('mailNoStyle');
+            newMsg.classList.remove('newMsgStyle');
+
+            mainContainer.style.gridTemplateColumns = "2% 49% 49%";
+
+            centerContainer.classList.add('removePointerEvents');
+            rightContainer.style.display = "none";
+        
+            rightContainer1.classList.remove('displayFlex');
+            rightContainer1.classList.add('displayNone');
+
+            rightContainer2.classList.remove('displayFlex');
+            rightContainer2.classList.add('displayNone');
+
+            rightContainerEmail.classList.add('transition');
+            rightContainerEmail.classList.add('displayBlock');
+        
+            rightContainerEmail.appendChild(goBack);
+            mainContainer.appendChild(rightContainerEmail);
+
+            let goBackToHomepage = () => {
+                el.classList.add('transition');
+                el.classList.remove('mailNoStyle');
+                el.classList.add('mailStyle');
+            };
+
+            goBack.addEventListener('click', goBackToHomepage);
+            newMsg.addEventListener('click', goBackToHomepage);
+        });
+    });
 };
 
 const displayArchivedMsg = () => {
     centerContainer.innerHTML = "";
-    centerContainer.classList.add('addPointerEvents');
-    rightContainerEmail.classList.remove('displayBlock');
-    rightContainer1.classList.remove('displayBlock');
-    rightContainer2.classList.remove('displayBlock');
 
-    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
-    mainContainer.classList.add('transition');
+    unreadMsg.classList.remove('tabBkColor');
+    unreadMsg.classList.add('noBackgroundColor');
 
-    rightContainer.classList.remove('displayNone');
-    rightContainer.classList.add('displayFlex');
+    sentMsg.classList.remove('tabBkColor');
+    sentMsg.classList.add('noBackgroundColor');
 
-    rightContainer.classList.add('transition');
-    unreadMsg.style.backgroundColor = "none";
-    archivedMsg.style.backgroundColor = "#cbcbcc";
-    sentMsg.style.backgroundColor = "none";
+    archivedMsg.classList.remove('noBackgroundColor');
+    archivedMsg.classList.add('tabBkColor');
 
     createMenuGrid();
     createArchivedMailList();
@@ -539,26 +646,57 @@ const createSentMailList = () => {
         mailContainer.appendChild(div3);
         mailContainer.appendChild(iconsMail);
 
-        sentMsgTab.appendChild(mailContainer);
-        mainContainer.appendChild(sentMsgTab);
+        centerContainer.appendChild(mailContainer);
     };
+    Array.from(document.getElementsByClassName('mail')).forEach((el) => {
+        el.addEventListener('click', function () {
+            el.classList.add('transition');
+            el.classList.add('mailNoStyle');
+            newMsg.classList.remove('newMsgStyle');
+
+            mainContainer.style.gridTemplateColumns = "2% 49% 49%";
+
+            centerContainer.classList.add('removePointerEvents');
+            rightContainer.style.display = "none";
+        
+            rightContainer1.classList.remove('displayFlex');
+            rightContainer1.classList.add('displayNone');
+
+            rightContainer2.classList.remove('displayFlex');
+            rightContainer2.classList.add('displayNone');
+
+            rightContainerEmail.classList.add('transition');
+            rightContainerEmail.classList.add('displayBlock');
+        
+            rightContainerEmail.appendChild(goBack);
+            mainContainer.appendChild(rightContainerEmail);
+
+            let goBackToHomepage = () => {
+                el.classList.add('transition');
+                el.classList.remove('mailNoStyle');
+                el.classList.add('mailStyle');
+            };
+
+            goBack.addEventListener('click', goBackToHomepage);
+            newMsg.addEventListener('click', goBackToHomepage);
+        });
+    });
 };
 
 const displaySentMsg = () => {
+    centerContainer.innerHTML = "";
+
+    unreadMsg.classList.remove('tabBkColor');
+    unreadMsg.classList.add('noBackgroundColor');
+
+    archivedMsg.classList.remove('tabBkColor');
+    archivedMsg.classList.add('noBackgroundColor');
+
+    sentMsg.classList.remove('noBackgroundColor');
+    sentMsg.classList.add('tabBkColor');
+
     createMenuGrid();
     createSentMailList();
-    newMsg.classList.remove('newMsgStyle');
-
-    mainContainer.style.gridTemplateColumns = "5% 47.5% 47.5%";
-
-    centerContainer.replaceWith(sentMsgTab);
-
-    rightContainer1.classList.remove('displayFlex');
-    rightContainer1.classList.add('displayNone');
-
-    rightContainer2.classList.remove('displayFlex');
-    rightContainer2.classList.add('displayNone');
-
 };
 
 // initialize content
