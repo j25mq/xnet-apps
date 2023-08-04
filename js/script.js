@@ -43,14 +43,6 @@ const createChatBubbles = () => {
     const rightPoint = document.createElement('div');
     rightPoint.setAttribute('class', 'right-point');
 
-    // const avatar1 = document.createElement('div');
-    // avatar1.innerHTML = `AB`;
-    // avatar1.setAttribute('class', 'avatar-1');
-
-    // const avatar2 = document.createElement('div');
-    // avatar2.innerHTML = `CD`;
-    // avatar2.setAttribute('class', 'avatar-2');
-
     const chatElts = [];
     const chatsCount = 3;
     for (let i = 0 ; i < chatsCount ; ++i) {
@@ -219,26 +211,6 @@ const createContent = () => {
     createChatBubbles();
     createAvRecipients();
     createNwMsgContent();
-    // mainContainer.appendChild(rightContainerEmail);
-    // destContainerCl.appendChild(initialsDest);
-    // destContainerCl.appendChild(txtDest);
-    // destContainerCl.appendChild(avatarDest);
-    // destContainer.appendChild(destContainerCl);
-    // rightContainer1.appendChild(destDisp);
-    // rightContainer1.appendChild(destContainer);
-    // rightContainer2.appendChild(goBack);
-    // mailContent.appendChild(sendTo);
-    // mailContent.appendChild(avatar1);
-    // mailContent.appendChild(avatar2);
-    // rightContainer2.appendChild(mailContent);
-    // replyContainer.appendChild(textareaReply);
-    // replyContainer.appendChild(sendBtn);
-    // rightContainer2.appendChild(replyContainer);
-    // mainContainer.appendChild(rightContainer1);
-    // mainContainer.appendChild(rightContainer2);
-    // rightContainerEmail.style.display="none";
-    // rightContainer1.style.display="none";
-    // rightContainer2.style.display="none";
 };
 
 const loadContent = () => {
